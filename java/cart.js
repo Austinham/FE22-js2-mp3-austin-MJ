@@ -3,10 +3,11 @@ export { displayCartQuantity , displayCartProducts, displayTotal };
 
 function displayCartQuantity(cart) {
     const sum = cart.getProducts().reduce((acc, product) => acc + product.quantity, 0);
-    document.querySelector('#cart button').innerText = `Cart: ${sum}`;
+    let sumBtn = document.querySelector('#cart button').innerText = `Cart: ${sum}`;
     document.querySelector('#cartbtn').addEventListener("click", () => {
         localStorage.setItem("cart", JSON.stringify(cart.getProducts()));
         window.location.href = "html/cart.html";
+        
     });
 }
 
@@ -27,17 +28,17 @@ function displayCartProducts(cart) {
             h3.innerText = `${product.quantity} x ${product.product.getName()}`;
             input.max = product.quantity;
             input.value = 0;
-            const totalH1 = document.querySelector('#cart-products h1');
-            totalH1.innerText = `Total amount: $${cart.getTotal()}`;
         });
     });
 }
 
 
+
+
 async function updateStock(cart) {
     for (const product of cart.getProducts()) {
         const response = await fetch(`https://online-shop-d741c-default-rtdb.europe-west1.firebasedatabase.app/products/${product.product.getId()-1}.json`, {
-            method: 'GET',
+            method: 'GET',  
             headers: { 'Content-Type': 'application/json' }
         });
         const data = await response.json();

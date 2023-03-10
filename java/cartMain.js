@@ -6,7 +6,7 @@ cart.setProducts(JSON.parse(localStorage.getItem("cart")));
 // Display cart quantity
 const cartButton = document.querySelector("#cart button");
 const cartQuantity = cart.getProducts().reduce((acc, product) => acc + product.quantity, 0);
-cartButton.innerText = `Cart: ${cartQuantity}`;
+let sumBtn = cartButton.innerText = `Cart: ${cartQuantity}`;
 
 // Update cart and save to local storage when cart button is clicked
 document.querySelector("#cartbtn").addEventListener("click", () => {
@@ -40,8 +40,12 @@ cart.getProducts().forEach(product => {
         h3.innerText = `${product.quantity} x ${product.productName} x  ${product.productprice * product.quantity}`;
         input.max = product.quantity;
         input.value = 0;
-
-        cart.removeProduct(input.value, product.product);
+        cart.removeProduct(input.value, product.product,);
+        
+        const cartButton = document.getElementById("cartbtn");
+        cartButton.innerText= `Cart: ${product.quantity-input.value}`
+        console.log(product.quantity)
+        
     });
 });
 

@@ -30,6 +30,7 @@ cart.getProducts().forEach(product => {
     input.value = 0;
     input.min = 0;
     input.max = product.quantity;
+    removeBtn.classList.add("removeBtn")
     removeBtn.innerText = "Remove";
 
     article.append(h3, input, removeBtn);

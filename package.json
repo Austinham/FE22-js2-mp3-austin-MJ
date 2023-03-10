@@ -1,0 +1,12 @@
+{
+  "name": "fe22-js2-mp3-austin-mj",
+  "version": "1.0.0",
+  "description": "Online shop",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
